@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Trust SMP Wiki</title>
+<style>
+:root{--bg:#0b0b0d;--panel:#141417;--panel2:#1b1b20;--line:#3a2528;--red:#ed2633;--red2:#a91420;--text:#f3f1f1;--muted:#aaa5a7;--gold:#e6b84b;--green:#66c76b;--blue:#5ca9ed;--purple:#bd70e8}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 50% -15%,#32151a 0,transparent 40%),var(--bg);color:var(--text);font:15px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+button,input{font:inherit}.layout{min-height:100vh;display:grid;grid-template-columns:245px 1fr}.sidebar{background:#101013;border-right:1px solid #302326;padding:22px 16px;position:sticky;top:0;height:100vh;overflow:auto}.brand{display:flex;align-items:center;gap:12px;margin:4px 4px 25px}.brand-mark{width:48px;height:48px;border:2px solid var(--red);border-radius:12px;display:grid;place-items:center;color:var(--red);font-size:25px;font-weight:900;box-shadow:0 0 22px #ed263322}.brand h1{font-size:19px;line-height:1.1;margin:0;letter-spacing:1px}.brand small{color:var(--red);font-weight:800;letter-spacing:3px}.side-label{font-size:11px;color:#777;text-transform:uppercase;letter-spacing:2px;margin:22px 10px 8px}.nav{display:grid;gap:5px}.nav button{border:0;background:transparent;color:#c9c4c5;text-align:left;padding:10px 12px;border-radius:8px;cursor:pointer;display:flex;gap:11px;align-items:center}.nav button:hover,.nav button.active{background:linear-gradient(90deg,#5a171e,#281317);color:white}.nav button.active{box-shadow:inset 3px 0 var(--red)}.nav .ico{width:20px;text-align:center}.side-note{margin:28px 8px 0;padding:13px;border:1px solid #39262a;border-radius:10px;color:var(--muted);font-size:12px}
+main{min-width:0}.topbar{height:68px;border-bottom:1px solid #302326;background:#0d0d0fdd;backdrop-filter:blur(10px);display:flex;align-items:center;justify-content:space-between;padding:0 34px;position:sticky;top:0;z-index:5}.crumb{color:#aaa;font-size:13px}.search{width:min(360px,48vw);position:relative}.search input{width:100%;background:#17171b;border:1px solid #494044;border-radius:9px;padding:10px 14px 10px 38px;color:white;outline:none}.search input:focus{border-color:var(--red)}.search span{position:absolute;left:13px;top:8px;color:#aaa;font-size:18px}
+.content{max-width:1450px;margin:auto;padding:30px 34px 60px}.hero{min-height:260px;border:1px solid #57252c;border-radius:15px;overflow:hidden;position:relative;background:linear-gradient(90deg,#120d10 0%,#241014df 45%,#160d10a8 100%),repeating-linear-gradient(135deg,#271216 0 2px,#151013 2px 16px);display:flex;align-items:center;padding:38px 42px;margin-bottom:24px}.hero:after{content:"";position:absolute;right:7%;top:-80px;width:290px;height:290px;border:1px solid #e72b3a55;transform:rotate(45deg);box-shadow:0 0 0 25px #e72b3a0c,0 0 0 55px #e72b3a09}.hero-content{position:relative;z-index:1;max-width:700px}.eyebrow{color:#ff6b73;text-transform:uppercase;letter-spacing:3px;font-size:11px;font-weight:800}.hero h2{font-size:clamp(38px,6vw,68px);line-height:.98;margin:12px 0 14px;letter-spacing:-2px}.hero h2 em{color:var(--red);font-style:normal}.hero p{color:#d0c9cb;font-size:17px;max-width:610px;margin:0 0 20px}.actions{display:flex;gap:10px;flex-wrap:wrap}.btn{border:1px solid var(--red);background:var(--red);color:white;padding:10px 15px;border-radius:8px;font-weight:750;cursor:pointer}.btn.secondary{background:transparent;color:#ff6972}.btn:hover{filter:brightness(1.15);transform:translateY(-1px)}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:24px}.stat{background:var(--panel);border:1px solid #33272a;border-radius:11px;padding:15px 17px}.stat strong{font-size:25px;display:block}.stat span{color:var(--muted);font-size:12px}
+.section-head{display:flex;align-items:end;justify-content:space-between;gap:12px;margin:28px 0 13px}.section-head h2{font-size:20px;margin:0}.section-head p{color:var(--muted);font-size:12px;margin:0}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.card{background:linear-gradient(145deg,#18181c,#111114);border:1px solid #38272b;border-radius:12px;padding:18px;min-width:0}.card h3{margin:0 0 7px;font-size:17px}.card p{margin:0;color:#bcb6b8;font-size:13px}.card-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}.tag{font-size:10px;text-transform:uppercase;letter-spacing:1px;color:#ff8790;background:#48171d;padding:4px 8px;border-radius:99px}.iconbox{width:37px;height:37px;border-radius:9px;background:#40151c;color:#ff6670;display:grid;place-items:center;font-size:19px}
+.split{display:grid;grid-template-columns:1.3fr 1fr;gap:14px}.list{display:grid;gap:0}.list-row{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid #2b2528}.list-row:last-child{border:0}.rank{color:#777;width:20px}.name{font-weight:700;flex:1}.tier{font-size:11px;font-weight:900;padding:3px 8px;border-radius:5px;background:#6d4c18;color:#ffe0a0}.tier.s{background:#851b25;color:#fff}.tier.a{background:#65501d;color:#ffe6a2}.tier.b{background:#254b6b;color:#c7e5ff}
+.tabs{display:flex;gap:7px;flex-wrap:wrap;margin:12px 0}.tabs button{border:1px solid #423438;background:#19171a;color:#ccc;padding:8px 12px;border-radius:7px;cursor:pointer}.tabs button.active{background:#8e1c27;border-color:var(--red);color:white}
+.table-wrap{overflow:auto;border:1px solid #3b2a2e;border-radius:10px}.data-table{width:100%;border-collapse:collapse;min-width:460px}.data-table th,.data-table td{text-align:left;padding:12px 14px;border-bottom:1px solid #30282b}.data-table th{font-size:11px;color:#ff8b92;text-transform:uppercase;letter-spacing:1px;background:#1c1518}.data-table td{font-size:13px}.data-table tr:last-child td{border-bottom:0}
+.profile-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.profile{background:#151519;border:1px solid #33292c;border-radius:10px;padding:14px;display:flex;gap:12px}.avatar{flex:0 0 42px;height:42px;border-radius:10px;background:linear-gradient(135deg,#551b24,#21151a);display:grid;place-items:center;font-weight:900;color:#ff9aa0}.profile h3{font-size:14px;margin:0 0 3px}.profile p{font-size:12px;color:#aaa;margin:0}
+.timeline{border-left:2px solid #70232b;margin:10px 0 0 10px;padding-left:20px;display:grid;gap:16px}.era{position:relative}.era:before{content:"";position:absolute;left:-27px;top:6px;width:10px;height:10px;border-radius:50%;background:var(--red);box-shadow:0 0 0 4px #ed263322}.era h3{margin:0 0 3px;font-size:15px}.era p{margin:0;color:#aaa;font-size:13px}
+.notice{border-left:3px solid var(--gold);background:#241e13;color:#d8c9a4;padding:12px 14px;border-radius:0 8px 8px 0;font-size:12px;margin-top:18px}
+.page{display:none}.page.active{display:block}.empty{color:var(--muted);padding:25px;text-align:center}
+footer{border-top:1px solid #33272a;padding:20px 0;color:#777;font-size:11px;text-align:center;margin-top:38px;letter-spacing:2px}
+@media(max-width:1050px){.grid,.profile-grid{grid-template-columns:repeat(2,1fr)}.layout{grid-template-columns:205px 1fr}.split{grid-template-columns:1fr}}
+@media(max-width:720px){.layout{display:block}.sidebar{position:relative;height:auto;border-right:0;border-bottom:1px solid #302326;padding:12px}.brand{margin-bottom:10px}.nav{display:flex;overflow:auto}.nav button{white-space:nowrap;padding:8px}.side-label,.side-note{display:none}.topbar{padding:0 15px;height:58px}.crumb{display:none}.content{padding:18px 14px 40px}.hero{padding:25px 20px;min-height:230px}.stats{grid-template-columns:repeat(2,1fr)}.grid,.profile-grid{grid-template-columns:1fr}.search{width:100%}.hero h2{font-size:43px}}
+</style>
+</head>
+<body>
+<div class="layout">
+<aside class="sidebar">
+  <div class="brand"><div class="brand-mark">⚔</div><div><h1>TRUST SMP</h1><small>WIKI</small></div></div>
+  <div class="side-label">Explore</div>
+  <nav class="nav" id="nav">
+    <button class="active" data-page="home"><span class="ico">⌂</span>Home</button>
+    <button data-page="players"><span class="ico">♟</span>Players</button>
+    <button data-page="pvp"><span class="ico">⚔</span>PvP Rankings</button>
+    <button data-page="testing"><span class="ico">▤</span>Testing System</button>
+    <button data-page="results"><span class="ico">✓</span>Test Results</button>
+    <button data-page="history"><span class="ico">◷</span>Server History</button>
+    <button data-page="events"><span class="ico">✦</span>Major Events</button>
+    <button data-page="tech"><span class="ico">⚡</span>Techniques</button>
+    <button data-page="duos"><span class="ico">♟</span>Duos & Rivalries</button>
+  </nav>
+  <div class="side-note"><b style="color:#fff">Community archive</b><br>Built to document Trust SMP players, PvP, history, and memorable moments.</div>
+</aside>
+<main>
+<header class="topbar"><div class="crumb" id="crumb">TRUST SMP WIKI / HOME</div><div class="search"><span>⌕</span><input id="search" placeholder="Search players, events, techniques..." aria-label="Search wiki"></div></header>
+<div class="content">
+<section class="page active" id="home">
+  <div class="hero"><div class="hero-content"><div class="eyebrow">The community archive</div><h2>TRUST SMP <em>WIKI</em></h2><p>Your source for the players, PvP scene, history, techniques, and events that shaped the Trust SMP.</p><div class="actions"><button class="btn" data-go="players">Explore Players →</button><button class="btn secondary" data-go="history">View Server History</button></div></div></div>
+  <div class="stats"><div class="stat"><strong>5</strong><span>Recognized server eras</span></div><div class="stat"><strong>13+</strong><span>Known PvP gamemodes</span></div><div class="stat"><strong>3</strong><span>Known Rapture users</span></div><div class="stat"><strong>∞</strong><span>Stories worth archiving</span></div></div>
+  <div class="section-head"><h2>Featured pages</h2><p>Start exploring the archive</p></div>
+  <div class="grid">
+    <article class="card"><div class="card-top"><div class="iconbox">✦</div><span class="tag">Featured event</span></div><h3>The 3v5 End Fight</h3><p>A memorable outnumbered fight featuring V0lDAURA_, Chubbzzz__, and boihandsomeboi against Eroision's five-player team.</p><p style="margin-top:12px"><button class="btn secondary" data-go="events">Read event →</button></p></article>
+    <article class="card"><div class="card-top"><div class="iconbox">⚡</div><span class="tag">Technique</span></div><h3>The Rapture Tech</h3><p>A high-level technique associated with Drowsey2249, Abyssalsovereign, and CrystaIized.</p><p style="margin-top:12px"><button class="btn secondary" data-go="tech">Explore techniques →</button></p></article>
+    <article class="card"><div class="card-top"><div class="iconbox">♟</div><span class="tag">Teamwork</span></div><h3>Top Server Duos</h3><p>Compare the server's strongest partnerships, their specialties, and likely matchup outcomes.</p><p style="margin-top:12px"><button class="btn secondary" data-go="duos">View duos →</button></p></article>
+  </div>
+  <div class="section-head"><h2>Current highlights</h2><p>Based on the latest information recorded</p></div>
+  <div class="split">
+    <div class="card"><h3>Top overall players</h3><div class="list">
+      <div class="list-row"><span class="rank">01</span><span class="name">Eroision</span><span class="tier s">#1</span></div>
+      <div class="list-row"><span class="rank">02</span><span class="name">CrystaIized</span><span class="tier s">#2</span></div>
+      <div class="list-row"><span class="rank">03</span><span class="name">ImKaizer_</span><span class="tier a">#3</span></div>
+      <div class="list-row"><span class="rank">04</span><span class="name">Bluelight</span><span class="tier a">#4</span></div>
+      <div class="list-row"><span class="rank">05</span><span class="name">Fx11_n</span><span class="tier a">#5</span></div>
+    </div></div>
+    <div class="card"><h3>Era leaders</h3><div class="list">
+      <div class="list-row"><span class="name">Golden Age</span><span>Meatball7006</span></div>
+      <div class="list-row"><span class="name">Founder Era</span><span>Steven7lo</span></div>
+      <div class="list-row"><span class="name">PvP Era</span><span>Fx11_n</span></div>
+      <div class="list-row"><span class="name">Mace Era</span><span>Abyssal</span></div>
+      <div class="list-row"><span class="name">Modern Era</span><span>Eroision</span></div>
+    </div></div>
+  </div>
+  <div class="notice">Archive note: rankings and historical details can change. Pages marked as draft should be checked with the server community before being treated as official.</div>
+</section>
+
+<section class="page" id="players">
+  <div class="section-head"><h2>Player directory</h2><p>Known players and their place in the server scene</p></div>
+  <div class="profile-grid" id="playerGrid">
+    <div class="profile"><div class="avatar">ER</div><div><h3>Eroision</h3><p>#1 overall · Modern Era leader · Elite utility and melee</p></div></div>
+    <div class="profile"><div class="avatar">CR</div><div><h3>CrystaIized (Shinju)</h3><p>#2 overall · S-tier Sword, Mace, Spear Mace</p></div></div>
+    <div class="profile"><div class="avatar">IK</div><div><h3>ImKaizer_</h3><p>#3 overall · Former S-tier Sword</p></div></div>
+    <div class="profile"><div class="avatar">BL</div><div><h3>Bluelight</h3><p>#4 overall · Notable inactive player</p></div></div>
+    <div class="profile"><div class="avatar">FX</div><div><h3>Fx11_n</h3><p>#5 overall · PvP Era leader</p></div></div>
+    <div class="profile"><div class="avatar">NQ</div><div><h3>Niqhtmc</h3><p>#6 overall · Strong shield modes and team synergy</p></div></div>
+    <div class="profile"><div class="avatar">DR</div><div><h3>Drowsey2249</h3><p>#7 overall · Strong duelist; currently inactive</p></div></div>
+    <div class="profile"><div class="avatar">AB</div><div><h3>Abyssalsovereign</h3><p>#8 overall · Mace Era leader; known as Abyssal</p></div></div>
+    <div class="profile"><div class="avatar">LI</div><div><h3>Limited00000</h3><p>#9 overall · Notable inactive player</p></div></div>
+    <div class="profile"><div class="avatar">JE</div><div><h3>Jestical</h3><p>#10 overall · Listed in the all-time rankings</p></div></div>
+    <div class="profile"><div class="avatar">VO</div><div><h3>V0lDAURA_</h3><p>#11 overall · MSMP main; shield and axe strengths</p></div></div>
+    <div class="profile"><div class="avatar">CH</div><div><h3>Chubbzzz__</h3><p>#12 overall · Strong sword and End-fight partner</p></div></div>
+    <div class="profile"><div class="avatar">BH</div><div><h3>boihandsomeboi</h3><p>#13 overall · S-tier Spear Mace; strong duo partner</p></div></div>
+    <div class="profile"><div class="avatar">EM</div><div><h3>Emu1at0r</h3><p>#14 overall · Trained by Eroision</p></div></div>
+    <div class="profile"><div class="avatar">SO</div><div><h3>Solivangant</h3><p>#15 overall · Mace Era community</p></div></div>
+  </div>
+  <div class="notice">Player profiles are starter entries. Add verified achievements, full gamemode ranks, notable matches, and profile histories as the wiki grows.</div>
+</section>
+
+<section class="page" id="pvp">
+  <div class="section-head"><h2>PvP rankings</h2><p>Gamemode leaders and known tier changes</p></div>
+  <div class="tabs" id="rankTabs"><button class="active" data-rank="overall">Overall</button><button data-rank="sword">Sword</button><button data-rank="mace">Mace</button><button data-rank="spear">Spear Mace</button></div>
+  <div class="table-wrap"><table class="data-table"><thead><tr><th>Rank</th><th>Player</th><th>Tier / status</th><th>Notes</th></tr></thead><tbody id="rankBody"></tbody></table></div>
+  <div class="notice">The overall list is the recorded all-time ordering. Mode-specific tables are partial snapshots, not a complete official tierlist. Exactly one S-tier player is assigned per gamemode in the server's tier system.</div>
+</section>
+
+
+<section class="page" id="testing">
+  <div class="section-head"><h2>The testing system</h2><p>How Trust SMP PvP tiers are assessed</p></div>
+  <div class="card">
+    <h3>Tier structure & point values</h3>
+    <p>Each gamemode has its own tier ranking. The tier labels run from S at the top to F at the bottom. There is exactly one S-tier player per gamemode; A through F can have multiple players.</p>
+    <div class="grid" style="margin-top:15px">
+      <div class="stat"><strong style="color:#ff626c">S · 30</strong><span>Top tier · one player per gamemode</span></div>
+      <div class="stat"><strong style="color:#e8c16a">A · 20</strong><span>High-level player</span></div>
+      <div class="stat"><strong style="color:#8ecaff">B · 15</strong><span>Strong player</span></div>
+      <div class="stat"><strong>C · 10</strong><span>Intermediate tier</span></div>
+      <div class="stat"><strong>D · 5</strong><span>Developing tier</span></div>
+      <div class="stat"><strong>F · 1</strong><span>Entry tier</span></div>
+    </div>
+    <div class="notice">These are the point values listed by Eroision. The exact formula for combining points across multiple gamemodes into an overall ranking has not been documented here, so the wiki does not assume one.</div>
+  </div>
+  <div class="section-head"><h2>How a test works</h2><p>Current documented rules</p></div>
+  <div class="grid">
+    <article class="card"><div class="card-top"><div class="iconbox">1</div><span class="tag">Choose a mode</span></div><h3>Pick the gamemode</h3><p>The player is tested in a specific gamemode. A player's tier can differ between modes, so a Sword rank does not automatically determine their Mace or MSMP rank.</p></article>
+    <article class="card"><div class="card-top"><div class="iconbox">2</div><span class="tag">Play the rounds</span></div><h3>Complete the required test</h3><p>The number of rounds depends on the gamemode and, for Sword, the tier being tested. The round requirements are listed below.</p></article>
+    <article class="card"><div class="card-top"><div class="iconbox">3</div><span class="tag">Evaluate</span></div><h3>Assess the performance</h3><p>The result matters, but the test is not simply a win/loss checkbox. Performance and how close the rounds are can matter; a close loss may still demonstrate the level needed for a tier.</p></article>
+    <article class="card"><div class="card-top"><div class="iconbox">4</div><span class="tag">Record</span></div><h3>Update the tierlist</h3><p>The awarded tier is recorded for that gamemode. High, mid, and low placements can further order players within the same tier.</p></article>
+  </div>
+  <div class="section-head"><h2>Rounds required by gamemode</h2><p>Requirements from Eroision's testing guide, dated October 15, 2026</p></div>
+  <div class="table-wrap"><table class="data-table"><thead><tr><th>Gamemode</th><th>Rounds</th><th>Notes</th></tr></thead><tbody>
+    <tr><td>Sword</td><td>10 rounds</td><td>B–S tier tests; 5 rounds or 10 when testing C tier or below (wording in original guide is ambiguous)</td></tr>
+    <tr><td>Axe</td><td>10 rounds</td><td>All tests</td></tr>
+    <tr><td>UHC</td><td>5–10 rounds</td><td>All tests</td></tr>
+    <tr><td>Pot</td><td>5–10 rounds</td><td>All tests</td></tr>
+    <tr><td>NethPot</td><td>4–5 rounds</td><td>All tests</td></tr>
+    <tr><td>SMP</td><td>3–5 rounds</td><td>All tests</td></tr>
+    <tr><td>Vanilla</td><td>3–5 rounds</td><td>All tests</td></tr>
+    <tr><td>Mace</td><td>3–5 rounds</td><td>All tests</td></tr>
+    <tr><td>Diamond SMP (DSMP)</td><td>3–5 rounds</td><td>All tests</td></tr>
+    <tr><td>Cart</td><td>3–5 rounds</td><td>All tests</td></tr>
+    <tr><td>Vanilla SMP (VSMP)</td><td>2–5 rounds</td><td>All tests</td></tr>
+    <tr><td>Spear Mace</td><td>5 or more rounds</td><td>All tests</td></tr>
+    <tr><td>Money SMP (MSMP)</td><td>4–5 rounds</td><td>All tests</td></tr>
+  </tbody></table></div>
+  <div class="section-head"><h2>Testers & spectators</h2></div>
+  <div class="card"><p>Players of any tier can act as testers. Spectators are ideally C-tier or higher. Testers are also evaluated during the test: for example, in a 10–8 Sword test, the tester can earn the tier being tested for as well, depending on the result and assessment.</p></div>
+  <div class="notice">Sword-round wording needs confirmation: the original message says “10 rounds for B to S test, 5 rounds or 10 if you are testing for C tier or below.” This page preserves that wording rather than guessing which of the two lower-tier round counts applies.</div>
+</section>
+
+<section class="page" id="results">
+  <div class="section-head"><h2>Test results archive</h2><p>Record completed tests and notable tier changes</p></div>
+  <div class="card">
+    <h3>Add a test result</h3>
+    <p>Use this form to draft a result entry. Entries are saved in this browser only; to publish them for everyone, add the entry to the website data and commit the updated <code>index.html</code> to GitHub.</p>
+    <form id="resultForm" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:14px">
+      <label style="font-size:12px;color:#bbb">Player tested<input required id="testedPlayer" placeholder="e.g. PlayerName" style="display:block;width:100%;margin-top:5px;padding:10px;border-radius:7px;background:#0d0d10;border:1px solid #514047;color:white"></label>
+      <label style="font-size:12px;color:#bbb">Tester<input required id="tester" placeholder="e.g. Eroision" style="display:block;width:100%;margin-top:5px;padding:10px;border-radius:7px;background:#0d0d10;border:1px solid #514047;color:white"></label>
+      <label style="font-size:12px;color:#bbb">Gamemode<select id="testMode" style="display:block;width:100%;margin-top:5px;padding:10px;border-radius:7px;background:#0d0d10;border:1px solid #514047;color:white"><option>Sword</option><option>Axe</option><option>UHC</option><option>Pot</option><option>NethPot</option><option>SMP</option><option>Vanilla</option><option>Mace</option><option>DSMP</option><option>Cart</option><option>VSMP</option><option>Spear Mace</option><option>MSMP</option></select></label>
+      <label style="font-size:12px;color:#bbb">Score<input required id="testScore" placeholder="e.g. 10–7" style="display:block;width:100%;margin-top:5px;padding:10px;border-radius:7px;background:#0d0d10;border:1px solid #514047;color:white"></label>
+      <label style="font-size:12px;color:#bbb">Tier awarded<input id="testTier" placeholder="e.g. High A" style="display:block;width:100%;margin-top:5px;padding:10px;border-radius:7px;background:#0d0d10;border:1px solid #514047;color:white"></label>
+      <label style="font-size:12px;color:#bbb">Date<input id="testDate" type="date" style="display:block;width:100%;margin-top:5px;padding:10px;border-radius:7px;background:#0d0d10;border:1px solid #514047;color:white"></label>
+      <label style="font-size:12px;color:#bbb;grid-column:1/-1">Extra notes<input id="testNotes" placeholder="Optional context, test conditions, or tier change" style="display:block;width:100%;margin-top:5px;padding:10px;border-radius:7px;background:#0d0d10;border:1px solid #514047;color:white"></label>
+      <button class="btn" type="submit" style="grid-column:1/-1">Add result to this browser</button>
+    </form>
+    <p id="formMessage" style="margin-top:9px;color:#9bd49b;font-size:12px"></p>
+  </div>
+  <div class="section-head"><h2>Recorded results</h2><p>Known examples from the current archive</p></div>
+  <div class="table-wrap"><table class="data-table"><thead><tr><th>Player</th><th>Tester / opponent</th><th>Mode</th><th>Score</th><th>Outcome / notes</th></tr></thead><tbody id="resultsBody">
+    <tr><td>CrystaIized</td><td>ImKaizer_</td><td>Sword</td><td>10–4</td><td>Passed S-tier test; Kaizer moved to high A</td></tr>
+    <tr><td>CrystaIized</td><td>Eroision</td><td>Crystal</td><td>10–7</td><td>Won; Eroision noted he lacked fire-resistance arrows</td></tr>
+    <tr><td>ImKaizer_</td><td>Eroision</td><td>Sword</td><td>4–10</td><td>Lost the test; historical result</td></tr>
+  </tbody></table></div>
+  <div class="actions" style="margin-top:12px"><button class="btn secondary" id="exportResults">Export my added results (CSV)</button><button class="btn secondary" id="clearResults">Clear browser-only additions</button></div>
+  <div class="notice">The added entries on this page are local to your browser. They do not automatically update the public GitHub Pages site or sync to other visitors. Publish approved entries by updating the site's file in GitHub.</div>
+</section>
+
+<section class="page" id="history">
+  <div class="section-head"><h2>Server history</h2><p>Five eras that shaped the community</p></div>
+  <div class="card"><div class="timeline">
+    <div class="era"><h3>👑 Golden Age Era — Meatball7006</h3><p>The earliest SMP period. Meatball7006 was dominant in grinding and survival, while the PvP skill ceiling was generally lower than in later eras. Limited00000 stood out as an unusually skilled exception.</p></div>
+    <div class="era"><h3>🏗 Founder Era — Steven7lo</h3><p>A period of server development and community growth. Steven7lo was known as an exceptional builder, early redstone talent, and strong PvPer.</p></div>
+    <div class="era"><h3>⚔ PvP Era — Fx11_n</h3><p>Competitive PvP became a defining part of the server. Players increasingly took testing, improvement, and gamemode specialization seriously.</p></div>
+    <div class="era"><h3>🔨 Mace Era — Abyssalsovereign</h3><p>Abyssal popularized mace PvP and introduced the style to several players across the community.</p></div>
+    <div class="era"><h3>🔥 Modern Era — Eroision</h3><p>The skill ceiling rose through advanced utility, counters, and techniques such as stun webs and web drains.</p></div>
+  </div></div>
+</section>
+
+<section class="page" id="events">
+  <div class="section-head"><h2>Major events</h2><p>Memorable moments from Trust SMP history</p></div>
+  <div class="grid">
+    <article class="card"><div class="card-top"><div class="iconbox">⚔</div><span class="tag">Team fight</span></div><h3>The 3v5 End Fight</h3><p>V0lDAURA_, Chubbzzz__, and boihandsomeboi faced Eroision, ImKaizer_, Niqhtmc, Emu1at0r, and echobladez_. The trio used End-edge and void tactics rather than relying on a straight melee fight. Niqhtmc was knocked into the void with a wind charge, V0lDAURA_ knocked Eroision off during the fight, and the trio eventually finished Kaizer after his armor broke.</p></article>
+    <article class="card"><div class="card-top"><div class="iconbox">💥</div><span class="tag">Investigation</span></div><h3>The Trial Chamber Griefing</h3><p>Chubbzzz__, boihandsomeboi, Abyssal, and Noogetman had spent hours redesigning a Trial Chamber. At around 8 PM, all five players online were suddenly teleported to Chubbzzz, then hundreds of TNT entities exploded and destroyed the build. The Shadow was initially suspected because the group had been teleported.</p><p style="margin-top:10px"><b>How Eroision investigated it:</b> Chubbzzz's recording showed him building and not placing TNT. The speed and scale of the blast suggested a mass command such as <code>/fill</code>, but the logs showed no recent use of that command. Eroision then found that Abyssal had used <code>/fill</code> about 12 hours earlier to create and detonate thousands of TNT entities. The key discovery was that The Shadow's teleport had also moved existing TNT entities. Eroision tested teleporting TNT entities and reproduced the effect.</p><p style="margin-top:10px"><b>Conclusion:</b> The Shadow's teleport triggered the explosion, but the TNT entities originated from Abyssal's earlier setup. The Shadow was cleared of deliberately creating the TNT for the griefing. The Trial Chamber remained destroyed.</p></article>
+    <article class="card"><div class="card-top"><div class="iconbox">🏆</div><span class="tag">Tier change</span></div><h3>CrystaIized Takes Sword S</h3><p>CrystaIized (Discord name Shinju) defeated ImKaizer_ 10–4 in a Sword S-tier test, earning S. Kaizer moved down to high A.</p></article>
+    <article class="card"><div class="card-top"><div class="iconbox">🛡</div><span class="tag">PvP history</span></div><h3>Chubbzzz__ Cheating Incidents</h3><p>Eroision caught Chubbzzz__ using banned PvP modifications/macros on multiple occasions. One specifically remembered incident involved a multi-keybind setup: a single axe input could register five shield-hit inputs. Chubbzzz demonstrated that the keybind could be increased as high as 30 clicks from one physical input.</p><p style="margin-top:10px"><b>Why it mattered:</b> The setup compressed repeated inputs into one action, giving an unfair advantage in shield interactions. The anti-cheat detected the behavior and issued an immediate ban.</p><p style="margin-top:10px"><b>Archive status:</b> Multiple cheating incidents have been mentioned, but this is the one with detailed mechanics currently documented. The wiki deliberately leaves the other incidents unspecified until their exact details are confirmed.</p></article>
+  </div>
+  <div class="notice">Event summaries are condensed from the current archive notes. Dates, full participant lists, clips, and primary evidence can be added later.</div>
+</section>
+
+<section class="page" id="tech">
+  <div class="section-head"><h2>Techniques</h2><p>Advanced mechanics and signature strategies</p></div>
+  <div class="grid">
+    <article class="card"><div class="card-top"><div class="iconbox">⚡</div><span class="tag">Advanced</span></div><h3>Rapture Tech</h3><p>A recognized high-level technique. The three players currently known to perform it are Drowsey2249, Abyssalsovereign, and CrystaIized.</p></article>
+    <article class="card"><div class="card-top"><div class="iconbox">🕸</div><span class="tag">Eroision signature</span></div><h3>Stun Web</h3><p>A utility sequence involving shield pressure, axe hits, and a cobweb placed to restrict the opponent's movement. Eroision is especially known for refining and consistently landing it.</p></article>
+    <article class="card"><div class="card-top"><div class="iconbox">💧</div><span class="tag">Counterplay</span></div><h3>Web Drain</h3><p>A web-based pressure tactic that can make it difficult for an opponent to escape or recover. Players have developed water placement and potion-based responses.</p></article>
+    <article class="card"><div class="card-top"><div class="iconbox">🏹</div><span class="tag">Cart PvP</span></div><h3>Cart X-Bow</h3><p>A TNT minecart and crossbow interaction associated with Eroision's Cart play. The wiki can expand this page with safe in-game demonstrations and match clips.</p></article>
+  </div>
+</section>
+
+<section class="page" id="duos">
+  <div class="section-head"><h2>Duos & rivalries</h2><p>The two leading partnerships and their matchup outlook</p></div>
+  <div class="split">
+    <article class="card"><div class="card-top"><div class="iconbox">♟</div><span class="tag">End specialists</span></div><h3>Chubbzzz__ + boihandsomeboi</h3><p>Known for End fights, environmental tactics, and using the void to turn difficult fights around. Their close friendship gives them strong chemistry. Against Niqhtmc + Drowsey2249, they can win when they can shape the environment and execute their strategy, but are less favored in a conventional fight.</p></article>
+    <article class="card"><div class="card-top"><div class="iconbox">♟</div><span class="tag">Team coordination</span></div><h3>Niqhtmc + Drowsey2249</h3><p>Known for strong coordination in team fights, including timely saves and backstabs. Their individual PvP strength and chemistry make them the more reliable duo in a standard fight.</p></article>
+  </div>
+  <div class="card" style="margin-top:14px"><h3>Predicted head-to-head</h3><p>Current estimate: Niqhtmc + Drowsey2249 win about 65% of the time; Chubbzzz__ + boihandsomeboi about 35%. The End/void strategy gives the latter duo a real path to stealing wins.</p></div>
+</section>
+<footer>TRUST SMP WIKI · PLAY · FIGHT · REMEMBER</footer>
+</div>
+</main>
+</div>
+<script>
+const pages={home:"HOME",players:"PLAYERS",pvp:"PVP RANKINGS",testing:"TESTING SYSTEM",results:"TEST RESULTS",history:"SERVER HISTORY",events:"MAJOR EVENTS",tech:"TECHNIQUES",duos:"DUOS & RIVALRIES"};
+function showPage(id){document.querySelectorAll(".page").forEach(p=>p.classList.toggle("active",p.id===id));document.querySelectorAll("#nav button").forEach(b=>b.classList.toggle("active",b.dataset.page===id));document.getElementById("crumb").textContent="TRUST SMP WIKI / "+(pages[id]||"HOME");window.scrollTo({top:0,behavior:"smooth"});}
+document.querySelectorAll("#nav button").forEach(b=>b.addEventListener("click",()=>showPage(b.dataset.page)));
+document.querySelectorAll("[data-go]").forEach(b=>b.addEventListener("click",()=>showPage(b.dataset.go)));
+const rankings={
+overall:[["1","Eroision","#1 overall","Modern Era leader"],["2","CrystaIized","#2 overall","Top Mace and Spear Mace; current Sword S"],["3","ImKaizer_","#3 overall","Former Sword S; now high A"],["4","Bluelight","#4 overall","Notable inactive player"],["5","Fx11_n","#5 overall","PvP Era leader"],["6","Niqhtmc","#6 overall","Strong shield modes"],["7","Drowsey2249","#7 overall","Notable team-fight partner"],["8","Abyssalsovereign","#8 overall","Mace Era leader"],["9","Limited00000","#9 overall","Notable inactive player"],["10","Jestical","#10 overall","All-time ranking"],["11","V0lDAURA_","#11 overall","MSMP main"],["12","Chubbzzz__","#12 overall","Strong sword player"],["13","boihandsomeboi","#13 overall","S-tier Spear Mace"],["14","Emu1at0r","#14 overall","Trained by Eroision"],["15","Solivangant","#15 overall","All-time ranking"]],
+sword:[["S","CrystaIized","S","Won 10–4 against ImKaizer_"],["A","ImKaizer_","High A","Former S-tier player"],["A","Fx11_n","A","Historical Sword leader"],["A","Eroision","A","Strong all-around player"],["B","Emu1at0r","B","Current recorded tier"],["B","Chubbzzz__","B","Current recorded tier"]],
+mace:[["S","CrystaIized","S","Current mode leader"],["—","Abyssalsovereign","Known specialist","Mace Era leader; beaten 5–0 by CrystaIized"]],
+spear:[["S","CrystaIized","S","Current mode leader"],["—","Drowsey2249","Rapture user","Known to perform Rapture"],["—","Abyssalsovereign","Rapture user","Known to perform Rapture"]]
+};
+function renderRanks(key){document.getElementById("rankBody").innerHTML=rankings[key].map(r=>`<tr><td>${r[0]}</td><td><b>${r[1]}</b></td><td>${r[2]}</td><td>${r[3]}</td></tr>`).join("");}
+renderRanks("overall");
+document.querySelectorAll("#rankTabs button").forEach(b=>b.addEventListener("click",()=>{document.querySelectorAll("#rankTabs button").forEach(x=>x.classList.remove("active"));b.classList.add("active");renderRanks(b.dataset.rank)}));
+
+const addedResultsKey="trustSmpWikiAddedResults";
+function getAddedResults(){try{return JSON.parse(localStorage.getItem(addedResultsKey)||"[]")}catch(e){return []}}
+function drawAddedResults(){const body=document.getElementById("resultsBody");getAddedResults().forEach((r,i)=>{const tr=document.createElement("tr");tr.dataset.added="true";[r.player,r.tester,r.mode,r.score,(r.tier||"Tier pending")+(r.date?" · "+r.date:"")+(r.notes?" · "+r.notes:"")].forEach(v=>{const td=document.createElement("td");td.textContent=v;tr.appendChild(td)});body.appendChild(tr)})}
+drawAddedResults();
+document.getElementById("resultForm").addEventListener("submit",e=>{e.preventDefault();const r={player:document.getElementById("testedPlayer").value.trim(),tester:document.getElementById("tester").value.trim(),mode:document.getElementById("testMode").value,score:document.getElementById("testScore").value.trim(),tier:document.getElementById("testTier").value.trim(),date:document.getElementById("testDate").value,notes:document.getElementById("testNotes").value.trim()};const all=getAddedResults();all.push(r);localStorage.setItem(addedResultsKey,JSON.stringify(all));document.querySelectorAll('#resultsBody tr[data-added="true"]').forEach(x=>x.remove());drawAddedResults();document.getElementById("formMessage").textContent="Added to this browser. To make it public, publish the entry in index.html on GitHub.";e.target.reset()});
+document.getElementById("clearResults").addEventListener("click",()=>{localStorage.removeItem(addedResultsKey);document.querySelectorAll('#resultsBody tr[data-added="true"]').forEach(x=>x.remove());document.getElementById("formMessage").textContent="Browser-only additions cleared."});
+document.getElementById("exportResults").addEventListener("click",()=>{const rows=getAddedResults();if(!rows.length){document.getElementById("formMessage").textContent="No browser-only results to export yet.";return}const cols=["player","tester","mode","score","tier","date","notes"];const csv=[cols.join(","),...rows.map(r=>cols.map(c=>'"'+String(r[c]||"").replace(/"/g,'""')+'"').join(","))].join("\n");const blob=new Blob([csv],{type:"text/csv"});const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="trust-smp-test-results.csv";a.click();URL.revokeObjectURL(a.href)});
+
+const search=document.getElementById("search");
+search.addEventListener("keydown",e=>{if(e.key==="Enter"){const q=search.value.trim().toLowerCase();if(!q)return;const all=[...document.querySelectorAll(".page")];let found=all.find(p=>p.innerText.toLowerCase().includes(q));if(found){showPage(found.id);search.blur()}else{alert("No matching page found. Try a player name, era, event, or technique.");}}});
+</script>
+</body>
+</html>
